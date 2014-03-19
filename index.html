@@ -1,0 +1,45 @@
+<html>
+<head>
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
+	<script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
+    <script type="text/javascript" src="backbone.collectionView.js"></script>
+	
+	
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+
+
+
+<script type="text/template" id="track_listing">
+    <li class="track-listing" id="track-<%= track_id %>">
+    <h1>TRACK</h1>
+        <span>URI: <%= track_uri %></span><br />
+    <span>Vote Count: <%= vote_count %></span><br />
+    <span>Track ID: <%= track_id %></span><br />
+    <span>Party ID: <%= party_name %></span><br />
+    <span>Playlist URI: <%= playlist_uri %></span><br />
+    <span>Current?: <%= current %></span><br />
+         <span>User Votes: <%= client_votes %></span><br />
+        <a href="#" class="upvote vote-button" data-upvote="<%= track_id %>">Up</a><br />
+        <a href="#" class="downvote vote-button" data-downvote="<%= track_id %>">Down</a><br />
+        </li>
+</script>
+
+<style>
+    .track-listing:hover{background:#e3e3e3;}
+    </style>
+
+
+</head>
+
+<body>
+
+<ul id="tracks"></ul>
+<script type="text/javascript" src="pm_bb.js"></script>
+</body>
+
+</html>
+
+
+
+
