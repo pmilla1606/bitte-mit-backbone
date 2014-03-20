@@ -1,0 +1,83 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+@-webkit-keyframes upAnim {
+    0% {
+        background-color: inherit;
+        opacity:1;
+        
+    }
+    50% {
+        background-color: #C8FFB6;
+        border-top:5px solid #ccc;
+    }
+    
+    100% {
+        background-color: inherit;
+        border-top:none;
+    }
+}
+
+.upvoted {
+    -webkit-animation-name: upAnim;
+    -webkit-animation-duration: 350ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+}    
+
+@-webkit-keyframes dnAnim {
+    0% {
+        background-color: transparent;
+        opacity:1;
+    }
+    50% {
+        background-color: #FFC2B6;
+    }
+    
+    100% {
+        background-color: transparent;
+    }
+}
+
+.downvoted {
+    -webkit-animation-name: dnAnim;
+    -webkit-animation-duration: 350ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+}    
+
+
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+
+
+#tracks li{padding:0;}
+#tracks li:nth-of-type(even){background-color:#eee;}
+#tracks{padding:0;list-style-type: decimal; }
+.track-listing{padding:0; }
+
+.trackInfo{float:left;}
+.vote-button,
+.voteInd{height:33%; display:block; float:right;}
+.voteHandle{float:right; height:100%;max-height:100px;}
+.voteInd{font-size:2em;}
+.vote-button{
+    padding:0.5em;
+}

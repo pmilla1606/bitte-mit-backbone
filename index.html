@@ -7,34 +7,44 @@
 	
 	
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
 
 
 <script type="text/template" id="track_listing">
-    <li class="track-listing" id="track-<%= track_id %>">
-    <h1>TRACK</h1>
-        <span>URI: <%= track_uri %></span><br />
-    <span>Vote Count: <%= vote_count %></span><br />
-    <span>Track ID: <%= track_id %></span><br />
-    <span>Party ID: <%= party_name %></span><br />
-    <span>Playlist URI: <%= playlist_uri %></span><br />
-    <span>Current?: <%= current %></span><br />
-         <span>User Votes: <%= client_votes %></span><br />
-        <a href="#" class="upvote vote-button" data-upvote="<%= track_id %>">Up</a><br />
-        <a href="#" class="downvote vote-button" data-downvote="<%= track_id %>">Down</a><br />
-        </li>
+    
+    
+        <section class="trackInfo">
+            <span class="trackname"><%= track_name %></span>
+            <span class="trackartist"><%= track_artist %></span>
+        </section>
+
+        <%= 
+
+        
+        
+
+        <section class="voteHandle">
+            <a href="#" class="upvote vote-button glyphicon glyphicon-plus" data-upvote="<%= track_id %>"></a>
+             <span class="voteInd"><%= client_votes %></span>
+            <a href="#" class="downvote vote-button glyphicon glyphicon-minus" data-downvote="<%= track_id %>"></a>
+        </section>
+        <div class="cf"></div>
+    
+ 
 </script>
 
-<style>
-    .track-listing:hover{background:#e3e3e3;}
-    </style>
+
 
 
 </head>
 
 <body>
+  Vote Cap = collection.length | Up or down. Once you've spent your votes you don't get them back.
+        <div id="trackWrap">
+            <ul id="tracks"></ul>
+        </div>
 
-<ul id="tracks"></ul>
 <script type="text/javascript" src="pm_bb.js"></script>
 </body>
 
