@@ -13,13 +13,13 @@
 
 <script type="text/template" id="track_listing">
     
-    
+    <li>
         <section class="trackInfo">
             <span class="trackname"><%= track_name %></span>
             <span class="trackartist"><%= track_artist %></span>
         </section>
 
-        <%= 
+        
 
         
         
@@ -30,7 +30,7 @@
             <a href="#" class="downvote vote-button glyphicon glyphicon-minus" data-downvote="<%= track_id %>"></a>
         </section>
         <div class="cf"></div>
-    
+    </li>
  
 </script>
 
@@ -40,12 +40,12 @@
 </head>
 
 <body>
-  Vote Cap = collection.length | Up or down. Once you've spent your votes you don't get them back.
+  Vote Cap = collection.length | SSSUp or down. Once you've spent your votes you don't get them back.
         <div id="trackWrap">
             <ul id="tracks"></ul>
         </div>
 
-<script type="text/javascript" src="pm_bb.js"></script>
+<script type="text/javascript" src="pm_bb2.js"></script>
 </body>
 
 </html>

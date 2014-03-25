@@ -1955,6 +1955,16 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/min\/pm_bb2-ck.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/min\/pm_bb2-ck.js",
+		"outputAbbreviatedPath": "\/min\/min\/pm_bb2-ck-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/min\/pm_bs-ck.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -1971,6 +1981,16 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/pm_bb.js",
 		"outputAbbreviatedPath": "\/min\/pm_bb-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/pm_bb2.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/pm_bb2.js",
+		"outputAbbreviatedPath": "\/min\/pm_bb2-ck.js",
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
