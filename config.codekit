@@ -12,7 +12,188 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/bower_components\/backbone.localStorage\/backbone.localStorage-min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/backbone.localStorage-min.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/min\/backbone.localStorage-min-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone.localStorage\/backbone.localStorage.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/backbone.localStorage.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/min\/backbone.localStorage-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone.localStorage\/CHANGELOG.md": {
+		"enableFootnoteSupport": 0,
+		"enableSmartyPants": 1,
+		"expandTabs": 1,
+		"fileType": 4096,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/CHANGELOG.md",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/CHANGELOG.html",
+		"outputPathIsSetByUser": 0
+		},
+	"\/bower_components\/backbone.localStorage\/examples\/todos\/destroy.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 555,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/examples\/todos\/destroy.png",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/examples\/todos\/destroy.png",
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bower_components\/backbone.localStorage\/examples\/todos\/index.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/examples\/todos\/index.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsSetByUser": 0
+		},
+	"\/bower_components\/backbone.localStorage\/examples\/todos\/todos.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/examples\/todos\/todos.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsSetByUser": 0
+		},
+	"\/bower_components\/backbone.localStorage\/examples\/todos\/todos.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/examples\/todos\/todos.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/examples\/todos\/min\/todos-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone.localStorage\/README.md": {
+		"enableFootnoteSupport": 0,
+		"enableSmartyPants": 1,
+		"expandTabs": 1,
+		"fileType": 4096,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/README.md",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/README.html",
+		"outputPathIsSetByUser": 0
+		},
+	"\/bower_components\/backbone.localStorage\/spec\/localStorage_commonjs_spec.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/localStorage_commonjs_spec.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/min\/localStorage_commonjs_spec-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone.localStorage\/spec\/localStorage_spec.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/localStorage_spec.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/min\/localStorage_spec-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone.localStorage\/spec\/runner.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/runner.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsSetByUser": 0
+		},
+	"\/bower_components\/backbone.localStorage\/spec\/runner_commonjs.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/runner_commonjs.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsSetByUser": 0
+		},
+	"\/bower_components\/backbone.localStorage\/spec\/support\/backbone.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/backbone.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/min\/backbone-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone.localStorage\/spec\/support\/chai.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/chai.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/min\/chai-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone.localStorage\/spec\/support\/jquery.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/jquery.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/min\/jquery-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone.localStorage\/spec\/support\/mocha.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/mocha.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsSetByUser": 0
+		},
+	"\/bower_components\/backbone.localStorage\/spec\/support\/mocha.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/mocha.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/min\/mocha-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone.localStorage\/spec\/support\/require.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/require.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/min\/require-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone.localStorage\/spec\/support\/underscore.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/underscore.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone.localStorage\/spec\/support\/min\/underscore-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/bower_components\/backbone\/backbone.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -1966,6 +2147,46 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/min\/pm_bb3-ck.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/min\/pm_bb3-ck.js",
+		"outputAbbreviatedPath": "\/min\/min\/pm_bb3-ck-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/min\/pm_bb4-ck.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/min\/pm_bb4-ck.js",
+		"outputAbbreviatedPath": "\/min\/min\/pm_bb4-ck-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/min\/pm_bb5-ck.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/min\/pm_bb5-ck.js",
+		"outputAbbreviatedPath": "\/min\/min\/pm_bb5-ck-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/min\/pm_bb6-ck.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/min\/pm_bb6-ck.js",
+		"outputAbbreviatedPath": "\/min\/min\/pm_bb6-ck-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/min\/pm_bs-ck.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -1996,6 +2217,46 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/pm_bb3.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/pm_bb3.js",
+		"outputAbbreviatedPath": "\/min\/pm_bb3-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/pm_bb4.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/pm_bb4.js",
+		"outputAbbreviatedPath": "\/min\/pm_bb4-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/pm_bb5.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/pm_bb5.js",
+		"outputAbbreviatedPath": "\/min\/pm_bb5-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/pm_bb6.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/pm_bb6.js",
+		"outputAbbreviatedPath": "\/min\/pm_bb6-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/pm_bs.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -2005,6 +2266,17 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
+		},
+	"\/README.md": {
+		"enableFootnoteSupport": 0,
+		"enableSmartyPants": 1,
+		"expandTabs": 1,
+		"fileType": 4096,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/README.md",
+		"outputAbbreviatedPath": "\/README.html",
+		"outputPathIsSetByUser": 0
 		},
 	"\/style.css": {
 		"fileType": 16,
