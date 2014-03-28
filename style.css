@@ -1,14 +1,24 @@
-/* apply a natural box layout model to all elements */
 *, *:before, *:after {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
  }
-#suggestwrap{
-	margin:0;
-	padding:0;
 
+@-webkit-keyframes upAnim {
+    0% {
+        background-color: inherit;
+        opacity:1;
+        
+    }
+    50% {
+        background-color: #C8FFB6;
+        border-top:5px solid #ccc;
+    }
+    
+    100% {
+        background-color: inherit;
+        border-top:none;
+    }
 }
 
-<<<<<<< HEAD
 .upvoted {
     -webkit-animation-name: upAnim;
     -webkit-animation-duration: 350ms;
@@ -109,26 +119,6 @@
 .voteInd{font-size:2em;}
 .vote-button{
     padding:0.5em;
-=======
-#suggestwrap li{
-	padding:0.5em 1em;
-	
-}
-
-#suggestwrap li:hover{
-	background-color:pink;
-	}
-	
-	
-#movieview span{
-  width:50%;
-  display:block;
-  float:left;}
-#movieview img{
-  max-height:100%;
-  max-width:50%;
-  float:left;
->>>>>>> FETCH_HEAD
 }
 
 .trackname,
