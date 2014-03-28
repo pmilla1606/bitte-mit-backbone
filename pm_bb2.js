@@ -70,18 +70,14 @@ var TrackView = Backbone.View.extend({
 			var temp = track;
 			that.$el.append(that.template(temp));
 		});
-		
-
 	},
 	vote: function(e){
 		var voteCollection = new TrackCollection();
+		var thisModel = this.model;
 		
 		console.log(this);
-		var thisModel = this.model;
 		console.log('you done click', this);
-
 	}
-
 });
 
 var run = new AppView();

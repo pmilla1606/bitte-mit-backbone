@@ -4,16 +4,18 @@
 	<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
 	<script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
     <script type="text/javascript" src="backbone.collectionView.js"></script>
+  
 	
 	
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
 
 
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/template" id="track_listing">
     
-    <li>
+         <span class="voteInd"><%= vote_count %></span>
+
         <section class="trackInfo">
             <span class="trackname"><%= track_name %></span>
             <span class="trackartist"><%= track_artist %></span>
@@ -24,28 +26,49 @@
         
         
 
-        <section class="voteHandle">
+        <section class="voteHandle" data-trackId="<%= track_id %>">
             <a href="#" class="upvote vote-button glyphicon glyphicon-plus" data-upvote="<%= track_id %>"></a>
-             <span class="voteInd"><%= client_votes %></span>
+             
             <a href="#" class="downvote vote-button glyphicon glyphicon-minus" data-downvote="<%= track_id %>"></a>
         </section>
         <div class="cf"></div>
-    </li>
+
  
 </script>
 
+<script type="text/template" id="vote_counter">
+Votes Left:<%= ls_votes_left %>
+</script>
+
+<script type="text/template" id="vote_updates">
+<%= track_name %><br />
+now has <strong><%= vote_count %></strong> vote(s)
+</script>
 
 
 
 </head>
 
 <body>
-  Vote Cap = collection.length | SSSUp or down. Once you've spent your votes you don't get them back.
+    
+    
+
+
+
+
+<div class="container-fluid">
+  <div class="row">
+        <div class="col-md-6"><div id="header"></div></div>
+        <div class="col-md-6"><div class="bounceInDown" id="track-updater"></div></div>
+       
         <div id="trackWrap">
             <ul id="tracks"></ul>
         </div>
+  </div>
+</div>
 
-<script type="text/javascript" src="pm_bb2.js"></script>
+
+<script type="text/javascript" src="pm_bb5.js"></script>
 </body>
 
 </html>

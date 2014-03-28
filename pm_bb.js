@@ -26,6 +26,10 @@ var trackCollection = Backbone.Collection.extend({
     },
     initialize:function(){
         var that = this;
+        that.on('change:client_votes', function(){
+            console.log('collection changed in collection', that);
+    
+        })
     },
     // maybe this is better than calling collection.fetch() in init?? I have no clue
     // parse: function(response){
@@ -40,7 +44,7 @@ var trackCollection = Backbone.Collection.extend({
 });
 var collection = new trackCollection();
 
-var maxVotes = collection.length;
+
 
 var trackView = Backbone.View.extend( {
     template : _.template( $( '#track_listing' ).html() ),
@@ -58,29 +62,29 @@ var trackView = Backbone.View.extend( {
     },
     vote:function(e){
        e.preventDefault();
-       
+       var maxVotes = collection.length;
        var thisModel = collection.get(this.model.cid);
        var thisVotes = thisModel.attributes.client_votes;
-
-        console.log(event);
+    
         if(Math.abs(thisVotes) == maxVotes){
+            console.log('out of votes');
             return;
         } 
         else if($(event.target).hasClass('upvote')){
-            
+            console.log('up');
             thisVotes = thisVotes +1;
             thisModel.set({'client_votes': thisVotes});
             this.$el.addClass('upvoted');
-
+            thisModel.save();
         }
         else{
-            
+           
             thisVotes = thisVotes -1;
             thisModel.set({'client_votes': thisVotes});
             this.$el.addClass('downvoted');
-            
+            thisModel.save();
         };
-        thisModel.save();
+        
     },
 });
 
@@ -96,18 +100,26 @@ var myCollectionView = new Backbone.CollectionView( {
 var appView = Backbone.View.extend({
     
     initialize: function(){
+        var that = this;            
+         that.render();
+         
+         /* setInterval(function(){ */
+            that.longPoll();
+         /* }, 2000)  */
+        
+    },
+    longPoll: function(){
         var that = this;
         collection.fetch({
             success: function(data){
-                // wtf is happening here??
-                var jaysawn = data;
-
-                _.each(data.models, function(i){
-                    console.log(i.attributes.bitteSortOrder);
-                    collection.add(i.attributes.bitteSortOrder);
-                });
-                
-                that.render();
+            // wtf is happening here??
+            var jaysawn = data;
+            _.each(data.models, function(i){
+               console.log(i.attributes.bitteSortOrder);
+               collection.add(i.attributes.bitteSortOrder);
+            });
+        
+            console.log(collection);
             }
         });
     },
@@ -119,6 +131,7 @@ var appView = Backbone.View.extend({
         collection.on('change:client_votes', function(){
             collection.sort();
             myCollectionView.render();
+            console.log('changed collection');
        });
        
         collection.on('change', function(){

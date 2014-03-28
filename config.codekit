@@ -12,6 +12,7 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+		"syntaxCheckerStyle": 1
 	"\/bower_components\/backbone\/backbone.js": {
 		"fileType": 64,
 		"ignore": 0,
