@@ -14,8 +14,8 @@ var data = [
 ];
 
 var TrackModel = Backbone.Model.extend({
-    //url:
-    defaults:{
+  // url: 'http://www.bitte.io/go/updateSpotify.php',
+  defaults:{
     track_uri: 0,
     vote_count: 0,
     track_id: 0,
@@ -25,28 +25,25 @@ var TrackModel = Backbone.Model.extend({
     client_votes: 0,
     track_name: '',
     track_artist: ''
-    }
+  }
 });
 
-var TrackCollection = Backbone.Collection(data,{
-    model: TrackModel,
-});
-
-var collectionView = new Backbone.CollectionView({
-  template : _.template( $( '#track_listing' ).html() ),
-    el : $( "ul#tracks" ),
-    selectable : false,
-    collection : TrackCollection,
-    modelView : EmployeeView
+var TrackCollection = new Backbone.Collection(data, {
+  model: TrackModel,
+  //url:,
+  comparator: function(m){
+    return -m.get('vote_count');
+  },
 });
 
 var AppView = Backbone.View.extend({
-    render : function() {
-        var trk = this.model.toJSON();
-        var html = this.template( trk );
+  initialize: function(){
+    this.render();
+  },
+  render: function(){
+    console.log(this);
+  }
+});
 
-        this.$el.removeClass('upvoted').removeClass('downvoted');
-        this.$el.html( html );
 
-    },
-})
+var run = new AppView();

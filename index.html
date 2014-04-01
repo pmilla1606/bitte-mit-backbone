@@ -3,7 +3,8 @@
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 	<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
 	<script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
-    <script type="text/javascript" src="backbone.collectionView.js"></script>
+    <script type="text/javascript" src="bower_components/backbone-poller/backbone.poller.min.js"></script>
+    <script type="text/javascript" src="jquery.tinysort.min.js"></script>
   
 	
 	
@@ -13,27 +14,28 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/template" id="track_listing">
-    
-         <span class="voteInd"><%= vote_count %></span>
+    <span class="voteInd"><%= vote_count %></span>
+    <section class="trackInfo">
+        <span class="trackname"><%= track_name %></span>
+        <span class="trackartist"><%= track_artist %></span>
+    </section>
 
-        <section class="trackInfo">
-            <span class="trackname"><%= track_name %></span>
-            <span class="trackartist"><%= track_artist %></span>
-        </section>
+    <section class="voteHandle" data-trackId="<%= track_id %>">
+        <a href="#" class="upvote vote-button glyphicon glyphicon-plus" data-upvote="<%= track_id %>"></a>
+         
+        <a href="#" class="downvote vote-button glyphicon glyphicon-minus" data-downvote="<%= track_id %>"></a>
+    </section>
+    <div class="cf"></div>
+</script>
 
-        
-
-        
-        
-
-        <section class="voteHandle" data-trackId="<%= track_id %>">
-            <a href="#" class="upvote vote-button glyphicon glyphicon-plus" data-upvote="<%= track_id %>"></a>
-             
-            <a href="#" class="downvote vote-button glyphicon glyphicon-minus" data-downvote="<%= track_id %>"></a>
-        </section>
-        <div class="cf"></div>
-
- 
+<script type="text/template" id="current_track">
+    <div id="current-track">
+    <section class="trackInfo">
+    <span>Currently Playing:</span>
+        <span class="trackname"><%= track_name %></span>
+        <span class="trackartist"><%= track_artist %></span>
+    </section>
+    </div>
 </script>
 
 <script type="text/template" id="vote_counter">

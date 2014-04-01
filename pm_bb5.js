@@ -1,4 +1,5 @@
  var rowTemplate=$('#track_listing').html();
+ var currentTemplate = $('#current_track').html();
 var updateTemplate = $('#vote_updates').html();
     var data = [
       {"track_id":"11","track_name":"I Am The Lion King","track_artist":"PAPA","track_uri":"spotify:track:68rLqLxfsninXMmL9YOYDQ","party_name":"SSS1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"5","current":"1"},
@@ -16,7 +17,7 @@ var updateTemplate = $('#vote_updates').html();
     ];
 
     var TrackModel = Backbone.Model.extend({
-        // url: 'http://www.bitte.io/go/updateSpotify.php',
+        url: 'http://www.bitte.io/go/backbone.php',
         defaults:{
         track_uri: 0,
         vote_count: 0,
@@ -30,16 +31,35 @@ var updateTemplate = $('#vote_updates').html();
         }
     });
 
+  
+  var PeopleCollection = Backbone.Collection.extend({
+    model: TrackModel,
+    url:'http://www.bitte.io/go/updateSpotify.php',
+    initialize: function(){
 
+      this.fetch({
+        success:function(data){
+            var tableView = new TableView({collection: peopleCollection});
+            $('body').append( tableView.render().$el );
+        }
+      });
+    
+    },
+    comparator: function(m){
+            return -m.get('vote_count');
+        },
+  });
+  
     /** Collection of models to draw */
-    var peopleCollection = new Backbone.Collection(data, {
+    /*
+var peopleCollection = new Backbone.Collection(data, {
         model: TrackModel,
         //url:,
         comparator: function(m){
-            
             return -m.get('vote_count');
         },
     });
+*/
 
 
     var VoteManager = Backbone.View.extend({
@@ -48,6 +68,7 @@ var updateTemplate = $('#vote_updates').html();
         initialize: function(){
             
             peopleCollection.on('change',function(){
+              console.log('peopleCollection has changed');
                 var voteCount = [];
                 for(i=0; i<localStorage.length; i++){
                    
@@ -74,31 +95,28 @@ var updateTemplate = $('#vote_updates').html();
     var TableView = Backbone.View.extend({
       el: '#tracks',
       initialize : function() {
-       
+
+        
+        var poller = Backbone.Poller.get(this.collection);
+    poller.on('success', function(model){
+      console.log('gay');
+    });
+        poller.start()
+        
         var partyId = this.collection.models[0].attributes.party_name;
         var maxLength = this.collection.models.length;
-
-       
-
-
-
-
 
           _.bindAll(this,'render','renderOne');
           if(this.model) {
             this.model.on('change',this.render,this);
-            console.log(this.model);
+            console.log(this.collection);
           }
-          peopleCollection.on('change', function(){
-           
-          });
-
-
+          
 
       },
       render: function() {
         
-        
+        console.log(this.collection);
         this.collection.sort();
         this.collection.each(this.renderOne);
          
@@ -110,7 +128,7 @@ var updateTemplate = $('#vote_updates').html();
           
 
           this.$el.append(row.render().$el);
-
+        
           return this;
       }
     });
@@ -125,13 +143,26 @@ var updateTemplate = $('#vote_updates').html();
       },
       initialize: function() {
         this.model.on('change',this.render,this);
-      },
-      model: peopleCollection.models,
+          
+          
+        },
+    //model: peopleCollection.models,
       render: function() {
-         peopleCollection.sort();
+
+
          
-          var html=_.template(rowTemplate,this.model.toJSON());
+
+         if(this.model.attributes.current ==1){
+          var currHtml=_.template(currentTemplate,this.model.toJSON());
+          this.$el.prepend(currHtml);
+         }
+         else{
+          var html = _.template(rowTemplate, this.model.toJSON() );
           this.$el.html(html);
+         }
+          
+          
+          
           return this;
       },
       vote: function(e){
@@ -139,37 +170,53 @@ var updateTemplate = $('#vote_updates').html();
         var thisModel = this.model;
         var thisClientVotes = Number(this.model.get('vote_count'));
         
-        
-        
-        console.log(updateTemplate);
-
+       
         if(e.target.attributes[2].name == 'data-upvote'){
-            this.$el.addClass('upvoted');
-            var thisClientVotes = thisClientVotes +1;
-            this.model.set({vote_count:thisClientVotes});
-
-
-
-            this.$el.removeClass('upvoted');
+            console.log('up');
+          /*   var thisClientVotes = thisClientVotes +1; */
+            this.model.set({vote_count:1});
+            
         }
         else{
-            this.$el.addClass('downvoted');
-            var thisClientVotes = thisClientVotes -1;
-            this.model.set({vote_count:thisClientVotes});
-            this.$el.removeClass('downvoted');
+            
+/*             var thisClientVotes = thisClientVotes -1; */
+            this.model.set({vote_count:-1});
+            
         }
-        var updateHtml = _.template(updateTemplate, this.model.toJSON());
+        this.model.save();
+       
+    var updateHtml = _.template(updateTemplate, this.model.toJSON());
         $('#track-updater').html(updateHtml)
             .fadeIn()
             .delay(1250)
             .fadeOut();
-        
+        $('ul#tracks > li').tsort('span.voteInd', {order: 'desc'});
 
         
+        //this.sortList();            
+        
+      },
+      sortList: function () {
+          
+            ul = this.$el.parents('ul');
+            console.log(ul);
+          // Get the list items and setup an array for sorting
+          var lis = ul[0].getElementsByTagName("LI");
+          var vals = [];
 
+          // Populate the array
+          for(var i = 0, l = lis.length; i < l; i++)
+            vals.push(lis[i].innerHTML);
 
+          // Sort it
+          vals.sort();
+          vals.reverse();
+          
 
-      }
+          // Change the list on the page
+          for(var i = 0, l = lis.length; i < l; i++)
+            lis[i].innerHTML = vals[i];
+        }
     });
 
     var UpdateView = Backbone.View.extend({
@@ -185,9 +232,12 @@ var updateTemplate = $('#vote_updates').html();
         }
 
     });
-    
+    //var server = new serverCollection();
+    var peopleCollection = new PeopleCollection();
+/*
     var tableView = new TableView({collection: peopleCollection});
     $('body').append( tableView.render().$el );
+*/
 
 
 
