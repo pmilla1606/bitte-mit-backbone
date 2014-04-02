@@ -24,7 +24,8 @@ var TrackModel = Backbone.Model.extend({
     current: 0,
     client_votes: 0,
     track_name: '',
-    track_artist: ''
+    track_artist: '',
+    vote_direction: 0,
   }
 });
 
@@ -132,13 +133,13 @@ var TrackView = Backbone.View.extend({
       var thisVoteCount = this.model.get('vote_count');
       console.log(e.target.attributes[2].name == 'data-upvote');
       if(e.target.attributes[2].name == 'data-upvote'){
-        this.model.set({'vote_count': Number(thisVoteCount) + 1});
+        this.model.set({'vote_count': Number(thisVoteCount) + 1, 'vote_direction': 1});
       }
       else{
-        this.model.set({'vote_count': Number(thisVoteCount) - 1});
+        this.model.set({'vote_count': Number(thisVoteCount) - 1, 'vote_direction': -1});
       }
       this.model.save();
-
+    $('ul#tracks > li').tsort('span.voteInd', {order: 'desc'});
    
     }
 });
@@ -146,4 +147,4 @@ var TrackView = Backbone.View.extend({
 var trackCollection = new TrackCollection();
 var run = new AppView();
 
-//trackCollection.add('track_uri', 0);
+//trackCollection.add('track_uri', 0);  
