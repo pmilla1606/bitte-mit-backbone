@@ -12,6 +12,127 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/bower_components\/backbone-poller\/backbone.poller.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone-poller\/backbone.poller.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone-poller\/min\/backbone.poller-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone-poller\/backbone.poller.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone-poller\/backbone.poller.min.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone-poller\/min\/backbone.poller.min-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone-poller\/Gruntfile.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone-poller\/Gruntfile.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone-poller\/min\/Gruntfile-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone-poller\/README.md": {
+		"enableFootnoteSupport": 0,
+		"enableSmartyPants": 1,
+		"expandTabs": 1,
+		"fileType": 4096,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone-poller\/README.md",
+		"outputAbbreviatedPath": "\/bower_components\/backbone-poller\/README.html",
+		"outputPathIsSetByUser": 0
+		},
+	"\/bower_components\/backbone-poller\/test\/lib\/backbone.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/lib\/backbone.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/lib\/min\/backbone-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone-poller\/test\/lib\/jquery-1.10.2.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/lib\/jquery-1.10.2.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/lib\/min\/jquery-1.10.2-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone-poller\/test\/lib\/require.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/lib\/require.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/lib\/min\/require-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone-poller\/test\/lib\/sinon-1.7.3.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/lib\/sinon-1.7.3.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/lib\/min\/sinon-1.7.3-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone-poller\/test\/lib\/underscore.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/lib\/underscore.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/lib\/min\/underscore-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone-poller\/test\/spec\/poller_events_spec.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/spec\/poller_events_spec.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/spec\/min\/poller_events_spec-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone-poller\/test\/spec\/poller_options_spec.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/spec\/poller_options_spec.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/spec\/min\/poller_options_spec-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bower_components\/backbone-poller\/test\/spec\/poller_spec.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/spec\/poller_spec.js",
+		"outputAbbreviatedPath": "\/bower_components\/backbone-poller\/test\/spec\/min\/poller_spec-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/bower_components\/backbone.localStorage\/backbone.localStorage-min.js": {
 		"fileType": 64,
 		"ignore": 0,

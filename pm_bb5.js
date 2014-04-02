@@ -239,6 +239,15 @@ var peopleCollection = new Backbone.Collection(data, {
     $('body').append( tableView.render().$el );
 */
 
+$(document).ready(function(){
+  $('nav section').on('click', function(){
+      
+      $(this).toggleClass('active').siblings().toggleClass('inactive')
+      $(this).children('.secondary').toggle().toggleClass('animated flipInX');
+      
+  });
+});
+
 
 
   

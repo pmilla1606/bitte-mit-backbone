@@ -1,4 +1,4 @@
-*, *:before, *:after {
+    *, *:before, *:after {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
  }
 
@@ -72,8 +72,16 @@
   -webkit-animation-name: bounceInDown;
 }
 .animated {
-  animation-duration: 1s;
-  animation-fill-mode: both;
+  -webkit-animation-duration: 0.75s;
+  -webkit-animation-fill-mode: both;
+}
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  -webkit-animation-duration: 2s;
 }
 .cf:before,
 .cf:after {
@@ -128,3 +136,100 @@
 
 #current-track{width:100%; height:100px; top:0; position: fixed; background-color:rgba(0,0,0,0.7); color:white;}
 #current-track .trackInfo{width:100%;}
+
+
+
+
+/* -- CLEAN THIS -- */
+
+@-webkit-keyframes flipInX {
+  0% {
+    -webkit-transform: perspective(400px) rotateX(90deg);
+    opacity: 0;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotateX(-10deg);
+  }
+
+  70% {
+    -webkit-transform: perspective(400px) rotateX(10deg);
+  }
+
+  100% {
+    -webkit-transform: perspective(400px) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.flipInX {
+  -webkit-backface-visibility: visible !important;
+  -webkit-animation-name: flipInX;
+}
+
+
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:2.5em;
+  border-bottom:2px solid #ccc;
+  background:rgba(255,255,255,0.7);
+}
+
+nav section{
+  -webkit-transition: all 250ms ease-in;
+  -moz-transition: all 250ms ease-in;
+  -ms-transition: all 250ms ease-in;
+  -o-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+  width:33%;
+  color:#999;
+  float:left;
+  text-align:center;
+  border-right:1px solid #ccc;
+ padding:0.5em 0;
+   background:rgba(255,255,255,0.7);
+}
+
+nav section img{float:left;}
+nav section span{
+  -webkit-transition: all 250ms ease-in;
+  -moz-transition: all 250ms ease-in;
+  -ms-transition: all 250ms ease-in;
+  -o-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+}
+
+nav section.active{ 
+ 
+  width:98%;
+  color:rgb(116, 221, 57);
+
+
+}
+
+nav section {padding:0.5em auto;}
+nav section.inactive{
+  width:1%;
+  overflow:hidden;
+  opacity:0.4;
+}
+.secondary{
+  width:100%;
+  left:0;
+  top:99%;
+  position:absolute;
+    background:rgba(255,255,255,0.7);
+  color:#333;
+  padding:0.5em;
+  display:none;
+  border-bottom:2px solid #ccc;
+}
+
+.secondary img{max-height:100px}
+
+#voteInfo.active span.badge{background:rgb(116, 221, 57);}
+nav section:last-of-type{border-right:none;}

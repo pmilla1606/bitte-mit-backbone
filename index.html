@@ -4,6 +4,7 @@
 	<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
 	<script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
     <script type="text/javascript" src="bower_components/backbone-poller/backbone.poller.min.js"></script>
+    <script type="text/javascript" src="bower_components/backbone.localStorage/backbone.localStorage-min.js"></script>
     <script type="text/javascript" src="jquery.tinysort.min.js"></script>
   
 	
@@ -60,17 +61,42 @@ now has <strong><%= vote_count %></strong> vote(s)
 
 <div class="container-fluid">
   <div class="row">
-        <div class="col-md-6"><div id="header"></div></div>
-        <div class="col-md-6"><div class="bounceInDown" id="track-updater"></div></div>
-       
-        <div id="trackWrap">
-            <ul id="tracks"></ul>
-        </div>
+       <nav id="quickNav">
+          <section id="trackInfo">
+            <span class="primary glyphicon glyphicon-play">
+            </span>
+            <div class="secondary">
+              <img src="http://www.placehold.it/150x150" />
+              <p><small>currently playing:</small><br /><strong>TrackName</strong><br />by TrackArtist</p>
+              <p><a href="#">Spotify Link</a> | <a href="#">Wikipedia?</a> | <a href="#">XYZ</a>
+              <div class="cf"></div>
+            </div>
+          </section>
+
+          <section id="voteInfo">
+            <span class="primary badge badge">42</span>
+             <div class="secondary">
+               <p><strong>Votes:</strong></p>
+               <p>You have <srong>voteCount</strong> vote(s) left! Use them wisely as you won't get them back</p>
+              <div class="cf"></div>
+            </div>
+          </section>
+
+          <section id="appInfo">
+            <span class="primary glyphicon glyphicon-info-sign"></span>
+             <div class="secondary">
+               <img src="http://www.placekitten.com/150/150" />
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat suscipit ut saepe minima placeat deleniti </p>
+              <div class="cf"></div>
+            </div>
+          </section>
+
+        </nav>
   </div>
 </div>
+<li id="tracks"></li>
 
-
-<script type="text/javascript" src="pm_bb5.js"></script>
+<script type="text/javascript" src="pm_bb6.js"></script>
 </body>
 
 </html>

@@ -14,36 +14,136 @@ var data = [
 ];
 
 var TrackModel = Backbone.Model.extend({
-  // url: 'http://www.bitte.io/go/updateSpotify.php',
+  url: 'http://www.bitte.io/go/backbone.php',
   defaults:{
     track_uri: 0,
     vote_count: 0,
     track_id: 0,
     party_name: 0,
     playlist_uri: 0,
-    curent: 0,
+    current: 0,
     client_votes: 0,
     track_name: '',
     track_artist: ''
   }
 });
 
-var TrackCollection = new Backbone.Collection(data, {
+var TrackCollection = Backbone.Collection.extend({
   model: TrackModel,
-  //url:,
+  url: 'http://www.bitte.io/go/updateSpotify.php',
+  initialize: function(){
+    
+  },
   comparator: function(m){
     return -m.get('vote_count');
   },
 });
 
+
+
+
+
 var AppView = Backbone.View.extend({
+  el: '#tracks',
+  events: {},
+  
   initialize: function(){
-    this.render();
+
+    
+
+    
+    var that = this;
+    _.bindAll(that, 'render', 'renderOne');
+    
+    trackCollection.fetch({
+      success: function(data){
+        trackCollection.add(data);
+        that.render();
+      }
+    });
+    
+
+    trackCollection.bind('change:vote_count', function(){
+      console.log('trackCollection has changed');
+      that.render();
+    });
+
+    
+
+
+
+
+
   },
   render: function(){
-    console.log(this);
-  }
+    
+    this.$el.html('');
+    trackCollection.each(this.renderOne);
+    
+
+
+    
+    return this;
+  },
+  renderOne: function(model){
+    
+    
+    var track = new TrackView({model:model});
+    
+    this.$el.append(track.$el);
+    
+    return this;
+  },
+  sortList: function(){
+    console.log('sort');
+    $('ul#tracks > li').tsort('span.voteInd', {order: 'desc'});
+  },
+
 });
 
 
+var TrackView = Backbone.View.extend({
+    
+    tagName: 'li',
+    className: 'trackListing',
+    template: _.template($('#track_listing').html()),
+    events:{
+      'click .vote-button': 'vote',
+    },
+    initialize: function(){
+      this.render();
+     
+    },
+    render: function(){
+
+     
+      this.$el.html(this.template(this.model.toJSON()));
+      return this;
+    },
+    vote: function(e){
+      var maxVotes = trackCollection.length;
+      for (i=0; i<maxVotes; i++){
+        console.log(trackCollection.models[i].attributes.vote_count);
+
+
+      } 
+
+
+      var thisVoteCount = this.model.get('vote_count');
+      console.log(e.target.attributes[2].name == 'data-upvote');
+      if(e.target.attributes[2].name == 'data-upvote'){
+        this.model.set({'vote_count': Number(thisVoteCount) + 1});
+      }
+      else{
+        this.model.set({'vote_count': Number(thisVoteCount) - 1});
+      }
+      this.model.save();
+
+   
+    }
+});
+
+var trackCollection = new TrackCollection();
 var run = new AppView();
+
+//trackCollection.add('track_uri', 0);
