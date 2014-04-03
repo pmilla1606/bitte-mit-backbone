@@ -1,18 +1,3 @@
-var data = [
-  {"track_id":"11","track_name":"I Am The Lion King","track_artist":"PAPA","track_uri":"spotify:track:68rLqLxfsninXMmL9YOYDQ","party_name":"SSS1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"5","current":"1"},
-  {"track_id":"8","track_name":"If You\u2019re My Girl, Then I\u2019m Your Man","track_artist":"PAPA","track_uri":"spotify:track:7L7KEdJEetZZlXdOGjiPZR","party_name":"1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"3","current":"0"},
-  {"track_id":"3","track_name":"Young Rut","track_artist":"PAPA","track_uri":"spotify:track:1OO8jZXbcBiy1BHd4btWyH","party_name":"1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"2","current":"0"},
-  {"track_id":"7","track_name":"Get Me Through The Night","track_artist":"PAPA","track_uri":"spotify:track:2HwaPOkklM2wLBiFgzxnrV","party_name":"1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"2","current":"0"},
-  {"track_id":"12","track_name":"Replacements (Curls In The Grass)","track_artist":"PAPA","track_uri":"spotify:track:0WXvxkxF7DrHbniMWFt3B5","party_name":"1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"1","current":"0"},
-  {"track_id":"2","track_name":"Put Me To Work","track_artist":"PAPA","track_uri":"spotify:track:1nTvJgr9WaRk6BDoUdjAmZ","party_name":"1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"0","current":"0"},
-  {"track_id":"4","track_name":"Forgotten Days","track_artist":"PAPA","track_uri":"spotify:track:0FkPGV98QtSzlaA7QxKZDM","party_name":"1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"0","current":"0"},
-  {"track_id":"5","track_name":"Cotton Candy","track_artist":"PAPA","track_uri":"spotify:track:7KYmNEICvEZkHEeY0RMz13","party_name":"1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"0","current":"0"},
-  {"track_id":"6","track_name":"If The Moon Rises","track_artist":"PAPA","track_uri":"spotify:track:3Dfs0kLsKAtnM304KsKPQE","party_name":"1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"0","current":"0"},
-  {"track_id":"9","track_name":"Tender Madness","track_artist":"PAPA","track_uri":"spotify:track:7bBnRjOgSI53XhAhT0vym8","party_name":"1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"0","current":"0"},
-  {"track_id":"10","track_name":"Got To Move","track_artist":"PAPA","track_uri":"spotify:track:1YpTGlr4XtU0xrlEI60ori","party_name":"1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"0","current":"0"},
-  {"track_id":"1","track_name":"PAPA","track_artist":"PAPA","track_uri":"spotify:track:78CKlM2G8bWHzNn9s7QlKj","party_name":"1395271676171","playlist_uri":"spotify:user:@:playlist:2riMRzFySmWTlEwLyONivf","vote_count":"-1","current":"0"}
-];
-
 var TrackModel = Backbone.Model.extend({
   url: 'http://www.bitte.io/go/backbone.php',
   defaults:{
@@ -33,7 +18,7 @@ var TrackCollection = Backbone.Collection.extend({
   model: TrackModel,
   url: 'http://www.bitte.io/go/updateSpotify.php',
   initialize: function(){
-    
+    this.reset();
   },
   comparator: function(m){
     return -m.get('vote_count');
@@ -49,17 +34,13 @@ var AppView = Backbone.View.extend({
   events: {},
   
   initialize: function(){
-
-    
-
-    
     var that = this;
     _.bindAll(that, 'render', 'renderOne');
     
     trackCollection.fetch({
       success: function(data){
         trackCollection.add(data);
-        that.render();
+
       }
     });
     
@@ -69,35 +50,70 @@ var AppView = Backbone.View.extend({
       that.render();
     });
 
+
+
+
+
+
     
-
-
-
-
-
+    var pollerOptions = {delay:2500};
+  var poller = Backbone.Poller.get(trackCollection, pollerOptions);
+  poller.on('success', function(model){
+    that.render();
+  });
+  poller.start();
+  $('#loader').fadeOut();
   },
   render: function(){
-    
-    this.$el.html('');
-    trackCollection.each(this.renderOne);
-    
+  var that = this;
+    that.$el.html('');
+  
+  
+  
+    trackCollection.each(function(model){
+    if (model.attributes.current == 1){
+      that.renderCurrent(model);
+      
+    }
+    else{
+      that.renderOne(model);    
+    }
+    });
 
 
-    
+// THIS IS A HACK -- FIGURE IT OUT
+$('.primary').on('click', function(){
+  $(this).parents('section').toggleClass('active').siblings().toggleClass('inactive');
+  $(this).siblings('.secondary').toggle().toggleClass('animated flipInX');
+});
     return this;
   },
+
   renderOne: function(model){
-    
-    
     var track = new TrackView({model:model});
-    
-    this.$el.append(track.$el);
-    
+  this.$el.append(track.$el);
     return this;
   },
-  sortList: function(){
-    console.log('sort');
-    $('ul#tracks > li').tsort('span.voteInd', {order: 'desc'});
+  renderCurrent: function(model){
+    
+  if (model.attributes.party_name !== localStorage.getItem('partyName') ){
+    console.log('resetting localstorage');
+    localStorage.setItem('partyName', model.attributes.party_name);
+    localStorage.setItem('votesCast', 0);
+  }
+  else{
+    console.log('ids match -- move on');
+  }
+  
+    
+  var currentTemplate = _.template($('#current_track').html());
+  $('#current-track-info').html(currentTemplate(model.toJSON()));
+
+  var votesRemainingTemp = _.template($('#vote_counter').html());
+  
+  $('#voteInfo').html(votesRemainingTemp({'votes_remaining': Math.abs(10 - (localStorage.getItem('votesCast')))}));
+  
+  
   },
 
 });
@@ -112,33 +128,48 @@ var TrackView = Backbone.View.extend({
       'click .vote-button': 'vote',
     },
     initialize: function(){
+      
       this.render();
      
     },
     render: function(){
-
+    _.bindAll(this, 'vote');
      
       this.$el.html(this.template(this.model.toJSON()));
       return this;
     },
+    voteUpdate: function(){
+      var voteUpdateTemp = _.template($('#vote_counter').html());
+      console.log(this);
+    
+  },
     vote: function(e){
+      e.preventDefault();
+      
+      if (localStorage.getItem('votesCast') == 10){
+        console.log('out of votes');
+        return;
+      }
+      
+      var thisLi = $(e.target).parents('.trackListing');
       var maxVotes = trackCollection.length;
-      for (i=0; i<maxVotes; i++){
-        console.log(trackCollection.models[i].attributes.vote_count);
-
-
-      } 
-
-
       var thisVoteCount = this.model.get('vote_count');
-      console.log(e.target.attributes[2].name == 'data-upvote');
-      if(e.target.attributes[2].name == 'data-upvote'){
+      
+      var lsVotes = localStorage.getItem('votesCast');
+      localStorage.setItem('votesCast', Number(lsVotes) + 1)  
+      
+      
+      if(e.target.attributes[1].name == 'data-upvote'){
+        
         this.model.set({'vote_count': Number(thisVoteCount) + 1, 'vote_direction': 1});
       }
       else{
+      
         this.model.set({'vote_count': Number(thisVoteCount) - 1, 'vote_direction': -1});
       }
       this.model.save();
+      
+
     $('ul#tracks > li').tsort('span.voteInd', {order: 'desc'});
    
     }
@@ -148,3 +179,8 @@ var trackCollection = new TrackCollection();
 var run = new AppView();
 
 //trackCollection.add('track_uri', 0);  
+
+$('.primary').on('click', function(){
+  $(this).parents('section').toggleClass('active').siblings().toggleClass('inactive');
+  $(this).siblings('.secondary').toggle().toggleClass('animated flipInX');
+});

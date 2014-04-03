@@ -2,87 +2,6 @@
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
  }
 
-@-webkit-keyframes upAnim {
-    0% {
-        background-color: inherit;
-        opacity:1;
-        
-    }
-    50% {
-        background-color: #C8FFB6;
-        border-top:5px solid #ccc;
-    }
-    
-    100% {
-        background-color: inherit;
-        border-top:none;
-    }
-}
-
-.upvoted {
-    -webkit-animation-name: upAnim;
-    -webkit-animation-duration: 350ms;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-timing-function: ease-in-out;
-}    
-
-@-webkit-keyframes dnAnim {
-    0% {
-        background-color: transparent;
-        opacity:1;
-    }
-    50% {
-        background-color: #FFC2B6;
-    }
-    
-    100% {
-        background-color: transparent;
-    }
-}
-
-.downvoted {
-    -webkit-animation-name: dnAnim;
-    -webkit-animation-duration: 350ms;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-timing-function: ease-in-out;
-}    
-
-@-webkit-keyframes bounceInDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-2000px);
-  }
-
-  60% {
-    opacity: 1;
-    transform: translateY(30px);
-  }
-
-  80% {
-    transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.bounceInDown {
-  animation-name: bounceInDown;
-  -webkit-animation-name: bounceInDown;
-}
-.animated {
-  -webkit-animation-duration: 0.75s;
-  -webkit-animation-fill-mode: both;
-}
-
-.animated.infinite {
-  -webkit-animation-iteration-count: infinite;
-}
-
-.animated.hinge {
-  -webkit-animation-duration: 2s;
-}
 .cf:before,
 .cf:after {
     content: " "; /* 1 */
@@ -114,25 +33,36 @@
     display: none;
     z-index: 9
 }
-#trackWrap{margin-top:100px;}
+#trackWrap{margin-top:35px;}
 #tracks li{padding:0;}
 #tracks li:nth-of-type(even){background-color:#eee;}
 #tracks{padding:0;list-style-type: none; }
 .track-listing{padding:0; }
 
-.trackInfo{float:left; display:block; width:80%;}
+.trackInfo{float:left; display:block; width:70%;}
 
 .voteInd{display:block; float:left; padding:10px; font-size:2em; width:10%;}
 
-.voteHandle{float:left; height:100%;max-height:100px; width:10%; display:block;}
+.voteHandle{float:right; height:100%;max-height:100px; width:10%; display:block; font-size:2em; min-width: 50px; z-index: 9999; }
+.voteHandle a{ color:#333; display:block;}
+.voteHandle a,
+.voteHandle a:active,
+.voteHandle a:hover{text-decoration: none; text-align: center;}
+.glyphicon-plus:before,
+.glyphicon-minus:before{display: block}
+.voteHandle a.upvote{color:rgba(0, 255, 108, 0.45);}
+.voteHandle a.downvote{color:rgba(255, 143, 44, 0.45); }
+
 .voteInd{font-size:2em;}
-.vote-button{
-    padding:0.5em;
+.vote-button span{
+    height:50px; display:block; line-height:50px;
 }
+
+
 
 .trackname,
 .trackartist{display:block; width:100%; text-align: center;}
-.trackname{font-size:1.5em;}
+.trackname{font-size:1.2em; font-weight:bolder;}
 
 #current-track{width:100%; height:100px; top:0; position: fixed; background-color:rgba(0,0,0,0.7); color:white;}
 #current-track .trackInfo{width:100%;}
@@ -142,22 +72,103 @@
 
 /* -- CLEAN THIS -- */
 
+/*-- OMG PLEASE FUCKING CLEAN THIS UP -- */
+
+#loader{width:100%; height:100%; position:fixed; z-index:999; background:white; text-align: center; color:#000;}
+.spinner {
+  margin: 0 auto;
+  width: 70px;
+  text-align: center;
+}
+.bitte-intro{width:100%; position: relative; margin-top:50%; display: block; font-size:4em;}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+  animation: bouncedelay 1.4s infinite ease-in-out;
+  /* Prevent first frame from flickering when animation starts */
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0.0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bouncedelay {
+  0%, 80%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 40% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+@-webkit-keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+  }
+}
+
+.fadeOutDown {
+  -webkit-animation-name: fadeOutDown;
+}
+
+@-webkit-keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+  }
+}
+
+.fadeOutUp {
+  -webkit-animation-name: fadeOutUp;
+}
+
 @-webkit-keyframes flipInX {
   0% {
-    -webkit-transform: perspective(400px) rotateX(90deg);
+    -webkit-transform: perspective(800px) rotateX(95deg);
     opacity: 0;
   }
 
   40% {
-    -webkit-transform: perspective(400px) rotateX(-10deg);
+    -webkit-transform: perspective(800px) rotateX(-5deg);
   }
 
   70% {
-    -webkit-transform: perspective(400px) rotateX(10deg);
+    -webkit-transform: perspective(800px) rotateX(5deg);
   }
 
   100% {
-    -webkit-transform: perspective(400px) rotateX(0deg);
+    -webkit-transform: perspective(800px) rotateX(0deg);
     opacity: 1;
   }
 }
@@ -167,7 +178,18 @@
   -webkit-animation-name: flipInX;
 }
 
+.animated {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+}
 
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  -webkit-animation-duration: 2s;
+}
 
 nav{
   position:fixed;
@@ -177,6 +199,7 @@ nav{
   height:2.5em;
   border-bottom:2px solid #ccc;
   background:rgba(255,255,255,0.7);
+  z-index: 999;
 }
 
 nav section{
@@ -191,7 +214,8 @@ nav section{
   text-align:center;
   border-right:1px solid #ccc;
  padding:0.5em 0;
-   background:rgba(255,255,255,0.7);
+   background:white;
+   height:100%;
 }
 
 nav section img{float:left;}
@@ -201,6 +225,8 @@ nav section span{
   -ms-transition: all 250ms ease-in;
   -o-transition: all 250ms ease-in;
   transition: all 250ms ease-in;
+  width:100%;
+  
 }
 
 nav section.active{ 
@@ -222,7 +248,7 @@ nav section.inactive{
   left:0;
   top:99%;
   position:absolute;
-    background:rgba(255,255,255,0.7);
+    background:white;
   color:#333;
   padding:0.5em;
   display:none;
@@ -233,3 +259,26 @@ nav section.inactive{
 
 #voteInfo.active span.badge{background:rgb(116, 221, 57);}
 nav section:last-of-type{border-right:none;}
+
+#current-track-info{text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+/*-- Add Tracks -- */
+#appInfo.active .secondary{
+  max-height:100%;
+  position:fixed;
+  overflow-y:scroll;
+  top:34px;
+}
+
+.spResultWrapper{
+    width:100%;
+
+}
+label{
+    width:100%;
+    padding:0.5em
+}
+input[type=radio]{display:none;}
+input[type=radio]:checked+label{
+    background:rgb(190, 219, 255);
+    
+}
