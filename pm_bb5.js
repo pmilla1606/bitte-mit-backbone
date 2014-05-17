@@ -35,31 +35,12 @@ var updateTemplate = $('#vote_updates').html();
   var PeopleCollection = Backbone.Collection.extend({
     model: TrackModel,
     url:'http://www.bitte.io/go/updateSpotify.php',
-    initialize: function(){
 
-      this.fetch({
-        success:function(data){
-            var tableView = new TableView({collection: peopleCollection});
-            $('body').append( tableView.render().$el );
-        }
-      });
-    
-    },
     comparator: function(m){
             return -m.get('vote_count');
-        },
+    },
   });
   
-    /** Collection of models to draw */
-    /*
-var peopleCollection = new Backbone.Collection(data, {
-        model: TrackModel,
-        //url:,
-        comparator: function(m){
-            return -m.get('vote_count');
-        },
-    });
-*/
 
 
     var VoteManager = Backbone.View.extend({
@@ -68,7 +49,7 @@ var peopleCollection = new Backbone.Collection(data, {
         initialize: function(){
             
             peopleCollection.on('change',function(){
-              console.log('peopleCollection has changed');
+            	console.log('peopleCollection has changed');
                 var voteCount = [];
                 for(i=0; i<localStorage.length; i++){
                    
@@ -90,43 +71,65 @@ var peopleCollection = new Backbone.Collection(data, {
         }
     });
 
-
+	var peopleCollection = new PeopleCollection();
     /** View representing a table */
     var TableView = Backbone.View.extend({
       el: '#tracks',
+      collection: peopleCollection,
       initialize : function() {
-
+      	var that = this;
+      			//peopleCollection.reset();
+      	
+				peopleCollection.fetch({
+					success: function(){
+						that.collection.add(data);
+						console.log(that.collection);
+					}
+				});
+				console.log(peopleCollection);
+		        
+		        
+		
+				_.bindAll(that,'render','renderOne');
+		        
+		        if(that.model) {
+		
+		        	that.model.on('change',that.render,that);
+		        }
+      	var poller = Backbone.Poller.get(this.collection);
+		
+		/*
+poller.on('success', function(model){
+			
+		});
         
-        var poller = Backbone.Poller.get(this.collection);
-    poller.on('success', function(model){
-      console.log('gay');
-    });
         poller.start()
         
-        var partyId = this.collection.models[0].attributes.party_name;
-        var maxLength = this.collection.models.length;
-
-          _.bindAll(this,'render','renderOne');
-          if(this.model) {
-            this.model.on('change',this.render,this);
-            console.log(this.collection);
-          }
+*/
+		
           
 
       },
       render: function() {
+      console.log(peopleCollection);
+      			var partyId = this.collection.models[0].attributes.party_name;
+		        var maxLength = this.collection.models.length;
+                $('body').append( tableView.render().$el );
+            
+        console.log(peopleCollection);
+        //this.collection.sort();
+        //this.collection.each(this.renderOne);
         
-        console.log(this.collection);
-        this.collection.sort();
-        this.collection.each(this.renderOne);
+       this.collection.on('add', function(){
+			
+       });
+        
          
         return this;
       },
       renderOne : function(model) {
            
           var row = new RowView({model:model});
-          
-
           this.$el.append(row.render().$el);
         
           return this;
@@ -143,27 +146,22 @@ var peopleCollection = new Backbone.Collection(data, {
       },
       initialize: function() {
         this.model.on('change',this.render,this);
-          
-          
-        },
-    //model: peopleCollection.models,
+        	
+        	
+      	},
+		//model: peopleCollection.models,
       render: function() {
 
-
-         
-
          if(this.model.attributes.current ==1){
-          var currHtml=_.template(currentTemplate,this.model.toJSON());
-          this.$el.prepend(currHtml);
+          	var currHtml=_.template(currentTemplate,this.model.toJSON());
+         	$('#trackInfo .secondary').append(currHtml);
          }
          else{
-          var html = _.template(rowTemplate, this.model.toJSON() );
-          this.$el.html(html);
+         	var html = _.template(rowTemplate, this.model.toJSON() );
+         	this.$el.html(html);
          }
           
-          
-          
-          return this;
+         return this;
       },
       vote: function(e){
         e.preventDefault();
@@ -178,14 +176,13 @@ var peopleCollection = new Backbone.Collection(data, {
             
         }
         else{
-            
-/*             var thisClientVotes = thisClientVotes -1; */
-            this.model.set({vote_count:-1});
+
+			this.model.set({vote_count:-1});
             
         }
         this.model.save();
        
-    var updateHtml = _.template(updateTemplate, this.model.toJSON());
+ 		var updateHtml = _.template(updateTemplate, this.model.toJSON());
         $('#track-updater').html(updateHtml)
             .fadeIn()
             .delay(1250)
@@ -233,11 +230,12 @@ var peopleCollection = new Backbone.Collection(data, {
 
     });
     //var server = new serverCollection();
-    var peopleCollection = new PeopleCollection();
-/*
-    var tableView = new TableView({collection: peopleCollection});
+   // var peopleCollection = new PeopleCollection();
+
+    			var tableView = new TableView();
     $('body').append( tableView.render().$el );
-*/
+
+//var tableView = new TableView();
 
 $(document).ready(function(){
   $('nav section').on('click', function(){
@@ -247,7 +245,5 @@ $(document).ready(function(){
       
   });
 });
-
-
 
   

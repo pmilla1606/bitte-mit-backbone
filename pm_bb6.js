@@ -57,63 +57,59 @@ var AppView = Backbone.View.extend({
 
     
     var pollerOptions = {delay:2500};
-  var poller = Backbone.Poller.get(trackCollection, pollerOptions);
-  poller.on('success', function(model){
-    that.render();
-  });
-  poller.start();
-  $('#loader').fadeOut();
+	var poller = Backbone.Poller.get(trackCollection, pollerOptions);
+	poller.on('success', function(model){
+	  that.render();
+	});
+	poller.start();
+	$('#loader').fadeOut();
   },
   render: function(){
-  var that = this;
+	var that = this;
     that.$el.html('');
-  
-  
-  
+	
+	
+	
     trackCollection.each(function(model){
-    if (model.attributes.current == 1){
-      that.renderCurrent(model);
-      
-    }
-    else{
-      that.renderOne(model);    
-    }
-    });
+		if (model.attributes.current == 1){
+			that.renderCurrent(model);
+			
+		}
+		else{
+			that.renderOne(model);		
+		}
+  	});
 
 
-// THIS IS A HACK -- FIGURE IT OUT
-$('.primary').on('click', function(){
-  $(this).parents('section').toggleClass('active').siblings().toggleClass('inactive');
-  $(this).siblings('.secondary').toggle().toggleClass('animated flipInX');
-});
+	
     return this;
   },
 
   renderOne: function(model){
     var track = new TrackView({model:model});
-  this.$el.append(track.$el);
+	this.$el.append(track.$el);
     return this;
   },
   renderCurrent: function(model){
-    
-  if (model.attributes.party_name !== localStorage.getItem('partyName') ){
-    console.log('resetting localstorage');
-    localStorage.setItem('partyName', model.attributes.party_name);
-    localStorage.setItem('votesCast', 0);
-  }
-  else{
-    console.log('ids match -- move on');
-  }
+		
+	if (model.attributes.party_name !== localStorage.getItem('partyName') ){
+		console.log('resetting localstorage');
+		localStorage.setItem('partyName', model.attributes.party_name);
+		localStorage.setItem('votesCast', 0);
+	}
+	else{
+		console.log('ids match -- move on');
+	}
   
-    
-  var currentTemplate = _.template($('#current_track').html());
-  $('#current-track-info').html(currentTemplate(model.toJSON()));
+	  
+	var currentTemplate = _.template($('#current_track').html());
+	$('#current-track-info').html(currentTemplate(model.toJSON()));
 
-  var votesRemainingTemp = _.template($('#vote_counter').html());
-  
-  $('#voteInfo').html(votesRemainingTemp({'votes_remaining': Math.abs(10 - (localStorage.getItem('votesCast')))}));
-  
-  
+	var votesRemainingTemp = _.template($('#vote_counter').html());
+	
+	$('#voteInfo').html(votesRemainingTemp({'votes_remaining': Math.abs(10 - (localStorage.getItem('votesCast')))}));
+	
+	
   },
 
 });
@@ -133,22 +129,25 @@ var TrackView = Backbone.View.extend({
      
     },
     render: function(){
-    _.bindAll(this, 'vote');
+		_.bindAll(this, 'vote');
      
       this.$el.html(this.template(this.model.toJSON()));
       return this;
     },
     voteUpdate: function(){
-      var voteUpdateTemp = _.template($('#vote_counter').html());
-      console.log(this);
-    
-  },
+  		var voteUpdateTemp = _.template($('#vote_updates').html());
+  		var constructed = voteUpdateTemp(this.model.toJSON());
+  		
+		$(constructed).appendTo('body').fadeIn().delay(1000).fadeOut();
+  		
+  	
+	},
     vote: function(e){
       e.preventDefault();
       
       if (localStorage.getItem('votesCast') == 10){
-        console.log('out of votes');
-        return;
+      	console.log('out of votes');
+      	return;
       }
       
       var thisLi = $(e.target).parents('.trackListing');
@@ -156,18 +155,22 @@ var TrackView = Backbone.View.extend({
       var thisVoteCount = this.model.get('vote_count');
       
       var lsVotes = localStorage.getItem('votesCast');
-      localStorage.setItem('votesCast', Number(lsVotes) + 1)  
+      localStorage.setItem('votesCast', Number(lsVotes) + 1)	
       
       
       if(e.target.attributes[1].name == 'data-upvote'){
-        
+      	
         this.model.set({'vote_count': Number(thisVoteCount) + 1, 'vote_direction': 1});
       }
       else{
-      
+    	
         this.model.set({'vote_count': Number(thisVoteCount) - 1, 'vote_direction': -1});
       }
-      this.model.save();
+     	this.model.save();
+      
+		this.voteUpdate();
+      
+    
       
 
     $('ul#tracks > li').tsort('span.voteInd', {order: 'desc'});
@@ -180,7 +183,3 @@ var run = new AppView();
 
 //trackCollection.add('track_uri', 0);  
 
-$('.primary').on('click', function(){
-  $(this).parents('section').toggleClass('active').siblings().toggleClass('inactive');
-  $(this).siblings('.secondary').toggle().toggleClass('animated flipInX');
-});

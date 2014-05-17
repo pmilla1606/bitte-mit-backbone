@@ -208,7 +208,7 @@ nav section{
   -ms-transition: all 250ms ease-in;
   -o-transition: all 250ms ease-in;
   transition: all 250ms ease-in;
-  width:33%;
+  width:50%;
   color:#999;
   float:left;
   text-align:center;
@@ -236,7 +236,8 @@ nav section.active{
 
 
 }
-
+nav section#trackInfo{width:80%;}
+nav section#voteInfo{width:20%}
 nav section {padding:0.5em auto;}
 nav section.inactive{
   width:1%;
@@ -256,6 +257,11 @@ nav section.inactive{
 }
 
 .secondary img{max-height:100px}
+
+
+#vote-updater{position:fixed; top:0; left:0; width:100%; height:75px; color:fff; background: rgb(255, 95, 223); text-align: center;  z-index:999}
+#vote-updater .name{font-size:2em;}
+#vote-updated .votes{font-size:1em;}
 
 #voteInfo.active span.badge{background:rgb(116, 221, 57);}
 nav section:last-of-type{border-right:none;}
