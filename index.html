@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
+  <script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
+  <script type="text/javascript" src="bower_components/backbone-poller/backbone.poller.min.js"></script>
+
+  <script type="text/javascript" src="jquery.tinysort.min.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="style2.css" />
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
+  <script type="text/template" id="track_listing">
+      <span class="voteInd"><%= vote_count %></span>
+      <div class="cf"></div>
+      <section class="trackInfo">
+          <span class="trackname"><%= track_name %></span>
+          <span class="trackartist"><%= track_artist %></span>
+      </section>
+
+      <section class="voteHandle" data-trackId="<%= track_id %>">
+          <a href="#" class="upvote vote-button"><span class="glyphicon glyphicon-circle-arrow-up" data-upvote="<%= track_id %>"></span></a>
+           
+          <a href="#" class="downvote vote-button"><span class="glyphicon glyphicon-circle-arrow-down" data-downvote="<%= track_id %>"></span></a>
+      </section>
+      <div class="cf"></div>
+  </script>
+
+  <script type="text/template" id="current_track">
+       <h3>Now Playing:</h3>
+       <strong><%= track_name %></strong> by <%= track_artist %>
+  </script>
+
+  <script type="text/template" id="vote_counter">
+      <h3>Votes Remaining: <strong><%= votes_remaining %></strong></h3>
+      
+          
+       
+  </script>
+
+  <script type="text/template" id="vote_updater">
+    <%= track_name %><br />
+    went from <strong><%= prev_vote %></strong> to <strong><%= curr_vote %></strong> vote(s)
+    </script>
+</head>
+
+
+
+  <script type="text/javascript" src="pm_bb7.js"></script>
+<body>
+  <div id="out-of-votes">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    <h2>You're out of Votes</h2>
+    <p>You'll get more once the song changes!</p>
+     <button type="button" id="closeWarning" class="btn btn-default">whatever</button>
+  </div>
+  <div id="trackUpdateWrap"></div>
+  <div id="loader">    
+      <span class="bitte-intro">bitte</span>
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+  
+ 
+ 
+  <div class="container">
+  
+
+    <section class="logo">bitte.io
+    <section id="navToggle">
+          <a href="#" title="Open Menu" class="hamburger"></a>
+      </section>
+    </section>
+    <div class="row">
+  
+    <nav>
+      <section class="navItem" id="trackInfo">
+        <p>Current Track</p>
+      </section>
+      
+      <section class="navItem" id="voteInfo">
+        <h3>Votes Remaining:</h3>
+      </section>
+      <section class="navItem" id="spSearch">
+        <h3>Add Songs</h3>
+        <div id="spotifyMDQuery">
+        
+          <input type="text" class="form-control" placeholder="Search Spotify">
+        
+        <div class="results">
+          <div class="list">
+          </div>
+        </div>
+        </div>
+      </section>
+    </nav>
+    <div id="trackWrap">
+      <ul id="tracks"></ul>
+     </div>
+
+    </div>
+  </div>
+
+
+</body>
+
+</html>
